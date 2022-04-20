@@ -1,0 +1,2138 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sheideo Api Documentation",
+        "version": "1.0.0"
+    },
+    "basePath": [
+        "/api/v1"
+    ],
+    "tags": [
+        {
+            "name": "Auth",
+            "basePath": "ashu"
+        },
+        {
+            "name": "Profile"
+        },
+        {
+            "name": "User"
+        },
+        {
+            "name": "Brand"
+        },
+        {
+            "name": "Category"
+        },
+        {
+            "name": "Sub Category"
+        },
+        {
+            "name": "Sub Sub Category"
+        },
+        {
+            "name": "Product"
+        },
+        {
+            "name": "Product Color"
+        },
+        {
+            "name": "Role"
+        },
+        {
+            "name": "Cart"
+        },
+        {
+            "name": "Order"
+        },
+        {
+            "name": "Address"
+        }
+    ],
+    "paths": {
+
+        "/api/v1/address/create": {
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "contactMobile": null,
+                                    "address1": null,
+                                    "address2": null,
+                                    "city": null,
+                                    "state": null,
+                                    "pincode": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/get": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                }
+            ]
+        },
+        "/api/v1/address/getbyid/{addressId}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                },
+                {
+                    "name": "addressId",
+                    "in": "path",
+                    "required": false,
+                    "type": "string"
+                }
+            ]
+        },
+        "/api/v1/address/update/{addressId}": {
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "addressId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "contactMobile": null,
+                                    "address1": null,
+                                    "address2": null,
+                                    "city": null,
+                                    "state": null,
+                                    "pincode": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/address/delete/{addressId}": {
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "addressId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+
+
+        "/api/v1/auth/register/{role}": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "required": true,
+                        "type": "string",
+                        "description": "seller/customer"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "mobile": "type:string"
+                                },
+                                "example": {
+                                    "fullName":"Ashutosh Dubey",
+                                    "email": "ashu@gmail.com",
+                                    "address": "noida",
+                                    "password": "test"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ashubbd2016@gmail.com",
+                                    "password": "ashu"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/adminlogin": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ashubbd2016@gmail.com",
+                                    "password": "ashutosh"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/requestResetPassword": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ashubbd2016@gmail.com"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/auth/resetPassword": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "userId":"", 
+                                    "token":"", 
+                                    "password":"test"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/api/v1/brand/create": {
+            "post": {
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "brand1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/brand/get": {
+            "get": {
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/brand/getbyid/{brandid}": {
+            "get": {
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "brandid",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter brand id"
+                }
+            ]
+        },
+        "/api/v1/brand/update/{brandId}": {
+            "put": {
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "brand1",
+                                    "brandId": "aes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/brand/delete/{brandid}": {
+            "delete": {
+                "tags": [
+                    "Brand"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "brandid",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter brand id"
+                    }
+                ]
+            }
+        },
+
+
+        "/api/v1/cart/create": {
+            "post": {
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "product_id": "6165e1e3dde967dc2e668a43",
+                                    "quantity": "2"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cart/get": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/cart/getbyid/{cartId}": {
+            "get": {
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "cartId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter cart id"
+                    }
+                ]
+            }
+        },
+        "/api/v1/cart/update/{cartId}": {
+            "put": {
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "cartId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter cart id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "product_id": "6165e1e3dde967dc2e668a43",
+                                    "quantity": "2",
+                                    "createdBy": "616f228f0a91c8a79597ae5b"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/cart/delete/{cartId}": {
+            "delete": {
+                "tags": [
+                    "Cart"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "cartId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter cart id"
+                    }
+                ]
+            }
+        },
+        "/api/v1/category/create": {
+            "post": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "cat1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/category/get": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/category/getbyid/{catid}": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "catid",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter category id"
+                }
+            ]
+        },
+        "/api/v1/category/update/{catid}": {
+            "put": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "catid",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter category id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "cat1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/category/delete/{catid}": {
+            "delete": {
+                "tags": [
+                    "Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "catid",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter category id"
+                    }
+                ]
+            }
+        },
+
+        "/api/v1/order/place": {
+            "post": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "addressId":"addressid",
+                                     "items":[{
+                                         "quantity":1,
+                                         "productOptionVariantId":"productOptionVariantId",
+                                         "amount":10
+                                         }],
+                                      "mode":"COD", 
+                                      "method":"Stripe"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/get": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/getTransactions": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/getbyid/{orderId}": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/order/update/{orderId}": {
+            "put": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "cartId": [
+                                        "61759ec765d9b9a6e9506948"
+                                    ],
+                                    "fromAddress": {
+                                        "city": "noida",
+                                        "state": "up"
+                                    },
+                                    "toAddress": {
+                                        "city": "delhi",
+                                        "state": "delhi"
+                                    },
+                                    "paymentMode": "upi",
+                                    "paymentStatus": "Success",
+                                    "totalAmount": "1000",
+                                    "paymentId": "id"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/order/delete/{orderId}": {
+            "delete": {
+                "tags": [
+                    "Order"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+
+
+        "/api/v1/product/create": {
+            "post": {
+                "tags": [
+                    "Product"
+                ],
+                "description": "(Under development)"
+            }
+        },
+        "/api/v1/product/getbycode/{code}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "description": "(Under development)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                },
+                {
+                    "in": "path",
+                    "name": "code",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter product code"
+                }
+            ]
+        },
+        "/api/v1/product/getProductAllOptionVariantsById/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "description": "(Under development)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                },
+                {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter variant id"
+                }
+            ]
+        },
+        "/api/v1/product/getUpdateDataById/{id}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "description": "(Under development)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                },
+                {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter variant id"
+                }
+            ]
+        },
+        "/api/v1/product/update/{productId}": {
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "description": "(Under development)"
+            }
+        },
+        "/api/v1/product/approve/{productId}": {
+            "put": {
+                "tags": [
+                    "Product"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "productId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        }, 
+        "/api/v1/product/get/{search}": {
+            "get": {
+                "tags": [
+                    "Product"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/product/delete/{productId}": {
+            "delete": {
+                "tags": [
+                    "Product"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "productId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter product id"
+                },
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                }
+            ]
+        },
+
+
+        "/api/v1/color/create": {
+            "post": {
+                "tags": [
+                    "Product Color"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": null,
+                                    "code": null
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/color/get": {
+            "get": {
+                "tags": [
+                    "Product Color"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                }
+            ]
+        },
+        "/api/v1/color/delete/{colorId}": {
+            "delete": {
+                "tags": [
+                    "Product Color"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "colorId",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/profile/getbyid/{profileId}": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "description": "(Any loggedin user can use this Api to get profile by profileId)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "profileId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter profile id"
+                    }
+                ]
+            }
+        },
+        "/api/v1/profile/getbyuserid": {
+            "get": {
+                "tags": [
+                    "Profile"
+                ],
+                "description": "(Any logged in user can use this Api to get their profile)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/api/v1/profile/update/{userid}": {
+            "put": {
+                "tags": [
+                    "Profile"
+                ],
+                "description": "(Any logged in user can use this Api to update their profile, right now image is not updating due to AWS S3 integration)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "userid",
+                        "in": "path",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "storeLogoImage": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": {
+                                            "firstName": "",
+                                            "lastName": "",
+                                            "email": "",
+                                            "phone":"1234567890",
+                                            "storeName":"",
+                                            "social":"",
+                                            "address":"",
+                                            "website": "",
+                                            "additionalNotes":""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/profile/delete/{profileId}": {
+            "delete": {
+                "tags": [
+                    "Profile"
+                ],
+                "description": "(Right now Admin can use this api to deactivate/delete any user's profile)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "profileId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter profile id"
+                    }
+                ]
+            }
+        },
+
+        
+        "/api/v1/role/create": {
+            "post": {
+                "tags": [
+                    "Role"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "key": "admin",
+                                    "name": "admin"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/role/get": {
+            "get": {
+                "tags": [
+                    "Role"
+                ],
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/role/getbyid/{roleId}": {
+            "get": {
+                "tags": [
+                    "Role"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "roleId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter role id"
+                }
+            ]
+        },
+        "/api/v1/role/update": {
+            "put": {
+                "tags": [
+                    "Role"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "admin",
+                                    "roleid": ""
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "/api/v1/subcategory/create": {
+            "post": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "subcat",
+                                    "catId": "aes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/subcategory/get": {
+            "get": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/subcategory/getbyid/{subCatId}": {
+            "get": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "subCatId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter sub category id"
+                }
+            ]
+        },
+        "/api/v1/subcategory/getbycatid/{catid}": {
+            "get": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "catid",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter category id"
+                }
+            ]
+        },
+        "/api/v1/subcategory/update/{subCatId}": {
+            "put": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "subCatId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter subcat id"
+                    },
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "subcat",
+                                    "catId": "aes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/subcategory/delete/{subcatId}": {
+            "delete": {
+                "tags": [
+                    "Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "subcatId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter sub category id"
+                    }
+                ]
+            }
+        },
+        "/api/v1/subsubcategory/create": {
+            "post": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "subsubcat2",
+                                    "subCatId": "616492499beee3e49545b3c1",
+                                    "catId": "6163d5ad274ee27f215b80a9"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/subsubcategory/get": {
+            "get": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/subsubcategory/getbyid/{subSubCatId}": {
+            "get": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "subSubCatId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter sub sub category id"
+                }
+            ]
+        },
+        "/api/v1/subsubcategory/getbysubcatid/{subCatId}": {
+            "get": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "subCatId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter sub category id"
+                }
+            ]
+        },
+        "/api/v1/subsubcategory/getbycatid/{catId}": {
+            "get": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "catId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter category id"
+                }
+            ]
+        },
+        "/api/v1/subsubcategory/update/{subSubCatId}": {
+            "put": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "subSubCatId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter subsubcat id"
+                    },
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "name": "subsubcat2",
+                                    "subCatId": "616492499beee3e49545b3c1",
+                                    "catId": "6163d5ad274ee27f215b80a9"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/subsubcategory/delete/{subsubcatid}": {
+            "delete": {
+                "tags": [
+                    "Sub Sub Category"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "in": "path",
+                        "name": "subsubcatid",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter sub sub category id"
+                    }
+                ]
+            }
+        },
+
+
+        "/api/v1/user/create/{role}": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "required": false,
+                        "type": "string",
+                        "description": "Enter role"
+                    },
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "jhon@gmail.com",
+                                    "firstName": "John",
+                                    "lastName": "Doe",
+                                    "phone": "1234567890",
+                                    "address": "noida",
+                                    "password": "jhon"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/get/{role}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "description": "(seller,customer and staff only)",
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string",
+                        "description": "Enter access token"
+                    },
+                    {
+                        "name": "role",
+                        "in": "path",
+                        "required": false,
+                        "type": "string",
+                        "description": "Enter role"
+                    }
+                ]
+            }
+        },
+        "/api/v1/user/getbyid/{userId}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "description": "Enter access token"
+                },
+                {
+                    "in": "path",
+                    "name": "userId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter user id"
+                }
+            ]
+        },
+        "/api/v1/user/update/{userId}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": true,
+                        "type": "string",
+                        "description": "Enter access token"
+                    },
+                    {
+                        "in": "path",
+                        "name": "userId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter user id"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "example": {
+                                    "email": "ashubbd2016@gmail.com",
+                                    "firstName": "Ashutosh",
+                                    "lastName": "Dubey",
+                                    "phone": "1234567890",
+                                    "address": "noida"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/user/delete/{userId}": {
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": true,
+                    "type": "string",
+                    "description": "Enter access token"
+                },
+                {
+                    "in": "path",
+                    "name": "userId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter user id"
+                }
+            ]
+        },
+
+
+
+        "/api/v1/stream/create": {
+            "post": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": {
+                                            "storeId":"6163d5ad274ee27f215b80a9",
+                                            "title": "store2",
+                                            "description": "desc",
+                                            "date":"",
+                                            "time":""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/stream/get": {
+            "get": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/api/v1/stream/getbystoreid/{storeId}": {
+            "get": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "storeId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter store id"
+                }
+            ]
+        },
+        "/api/v1/stream/getbyid/{streamId}": {
+            "get": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "streamId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter stream id"
+                }
+            ]
+        },
+        "/api/v1/stream/update/{streamId}": {
+            "put": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "streamId",
+                        "type": "string",
+                        "required": true,
+                        "description": "Enter stream id"
+                    },
+                    {
+                        "name": "auth_key",
+                        "in": "header",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "file": {
+                                        "type": "string",
+                                        "format": "binary"
+                                    },
+                                    "data": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": {
+                                            "storeId":"6163d5ad274ee27f215b80a9",
+                                            "title": "store2",
+                                            "description": "desc",
+                                            "date":"",
+                                            "time":""
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/stream/delete/{streamId}": {
+            "delete": {
+                "tags": [
+                    "Stream"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "in": "path",
+                    "name": "streamId",
+                    "type": "string",
+                    "required": true,
+                    "description": "Enter stream id"
+                },
+                {
+                    "name": "auth_key",
+                    "in": "header",
+                    "required": false,
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MzcyMTE1OTAsImV4cCI6MTYzNzIxNTE5MCwiYXVkIjoiNjE2ODg1MzhmMTEyYmRkOWEzNDEzMDc4In0.H81tCnNfGmf3ikqcQH3lSKBsf2I-24No6-AZGlWq-4Q"
+                }
+            ]
+        }
+    },
+    "components": {}
+}
